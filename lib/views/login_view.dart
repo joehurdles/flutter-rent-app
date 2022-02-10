@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent/views/welcome_view.dart';
+import 'package:rent/services/api_manager.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -7,6 +8,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+   APIManager apiService = APIManager();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,24 @@ class _LoginState extends State<Login> {
       ),
         title: Text("brent"),
       ),
-      body: SingleChildScrollView(
+      body: Container(
+      child: FutureBuilder<List>(
+          future: apiService.getLogins(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot){
+            if(snapshot.hasData){
+
+              
+             return ListView.builder(  
+
+                itemCount: snapshot.data?.length,
+                itemBuilder: (context, i){
+                
+                  // print(snapshot.data![i]['success']);
+                  // for (var query in snapshot.data![i]['success']){
+                  String Email = snapshot.data![i]["Email"];
+                  String Password = snapshot.data![i]["Password"];
+
+                    return Card( 
         child: Column(
           children: <Widget>[
             Padding(
@@ -118,7 +138,18 @@ class _LoginState extends State<Login> {
 
           ],
         ),
-      ),
     );
   }
+             );
+ }else{
+              return const Center(
+                child: Text('No data found'),
+              );
+            }
+          },
+        ),
+      ),
+      
+    );
+ }
 }
