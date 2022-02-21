@@ -48,37 +48,37 @@ class HouseView extends StatelessWidget {
                     child:
         ListTile(
           
-          leading: Image.asset('assets/images/loyalKenss.png'),
-           title: Text(description, 
-           style:TextStyle(
-             fontSize:15,
-             fontWeight: FontWeight.w800, 
-             color: Colors.black),
-             ),
-             subtitle: Text("Location: "+location, style:TextStyle(fontSize:12,fontWeight: FontWeight.w500, color: Colors.black),
-        ),
-           trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
+        //   leading: Image.asset('assets/images/loyalKenss.png'),
+        //    title: Text(description, 
+        //    style:TextStyle(
+        //      fontSize:15,
+        //      fontWeight: FontWeight.w800, 
+        //      color: Colors.black),
+        //      ),
+        //      subtitle: Text("Location: "+location, style:TextStyle(fontSize:12,fontWeight: FontWeight.w500, color: Colors.black),
+        // ),
+        //    trailing: Row(
+        //   mainAxisSize: MainAxisSize.min,
+        //   children: [
             
-           Container(
-              height: 25,
-              width: 60,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => const WelcomeView()));
-                },
-                child: const Text(
-                  'View',
-                  style: TextStyle(color: Colors.white, fontSize: 10),
-                ),
-              ),
-            ),
-          ],
-        ),
+        //    Container(
+        //       height: 25,
+        //       width: 60,
+        //       decoration: BoxDecoration(
+        //           color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+        //       child: FlatButton(
+        //         onPressed: () {
+        //           Navigator.push(
+        //               context, MaterialPageRoute(builder: (_) => const WelcomeView()));
+        //         },
+        //         child: const Text(
+        //           'View',
+        //           style: TextStyle(color: Colors.white, fontSize: 10),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
         )
           );
                   

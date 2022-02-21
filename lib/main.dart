@@ -3,6 +3,7 @@ import 'package:rent/views/welcome_view.dart';
 import 'package:rent/views/register_view.dart';
 import 'package:rent/views/login_view.dart';
 import 'package:rent/views/house_view.dart';
+import 'package:rent/views/card_view.dart';
 
 //import 'package:rent/views/page_view.dart';
 void main(){
@@ -19,7 +20,7 @@ class brent extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home:RegisterView(),
+      home:CardView(),
     );
   }
 }
