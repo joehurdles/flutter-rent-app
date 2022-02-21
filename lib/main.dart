@@ -19,7 +19,7 @@ class brent extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home:HouseView(),
+      home:RegisterView(),
     );
   }
 }

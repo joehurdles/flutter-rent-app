@@ -82,15 +82,16 @@ class HouseView extends StatelessWidget {
         )
           );
                   
-            
+          
           },
 
                 // },
+
+              
               
               padding: const EdgeInsets.all(30),
       
    
-     
        
            
           
