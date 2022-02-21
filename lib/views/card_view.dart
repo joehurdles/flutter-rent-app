@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:rent/views/welcome_view.dart';
 import 'package:rent/views/item1.dart';
 import 'package:rent/views/item2.dart';
 import 'package:rent/views/item3.dart';
@@ -81,7 +82,22 @@ List<T> map<T>(List list, Function handler) {
                 );
               }).toList(),
             ),
-    
+     Container(
+              height: 50,
+              width: 150,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => WelcomeView()));
+                },
+                child: Text(
+                  'Contact Owner',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ),
     Row(
       children: <Widget>[
         Text("data")
