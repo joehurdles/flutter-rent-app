@@ -4,6 +4,7 @@ import 'package:rent/views/register_view.dart';
 import 'package:rent/views/login_view.dart';
 import 'package:rent/views/house_view.dart';
 import 'package:rent/views/card_view.dart';
+import 'package:rent/views/OwnerProfile.dart';
 
 //import 'package:rent/views/page_view.dart';
 void main(){

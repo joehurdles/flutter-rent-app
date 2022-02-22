@@ -16,22 +16,10 @@ class Item2 extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            "Data",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 22.0,
-              fontWeight: FontWeight.bold
-            )
-          ),
-          Text(
-            "Data",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17.0,
-              fontWeight: FontWeight.w600
-            )
-          ),
+        Image(image: NetworkImage('https://images.unsplash.com/flagged/photo-1556438758-1d61c8c65409?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80'),
+            height: 492.0,
+            fit: BoxFit.cover,
+        ),
         ],
       ),
     );

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rent/views/welcome_view.dart';
+import 'package:rent/views/OwnerProfile.dart';
 import 'package:rent/views/item1.dart';
 import 'package:rent/views/item2.dart';
 import 'package:rent/views/item3.dart';
 import 'package:rent/views/item4.dart';
+import 'package:rent/views/item5.dart';
 //import 'package:rent/views/welcome_view.dart';
 //import 'package:rent/services/api_manager.dart';
 class CardView extends StatefulWidget {
@@ -21,7 +23,8 @@ List cardList=[
     Item1(),
     Item2(),
     Item3(),
-    Item4()
+    Item4(),
+    Item5()
   ];
 List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -56,7 +59,7 @@ List<T> map<T>(List list, Function handler) {
          options: CarouselOptions(
                 height: 500.0,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 20),
+                autoPlayInterval: Duration(seconds: 5),
                 autoPlayAnimationDuration: Duration(milliseconds: 5000),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 pauseAutoPlayOnTouch: true,
@@ -82,27 +85,30 @@ List<T> map<T>(List list, Function handler) {
                 );
               }).toList(),
             ),
+            SizedBox(
+              height: 30,
+           ),
      Container(
-              height: 50,
+              height: 30,
               width: 150,
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => WelcomeView()));
+                      context, MaterialPageRoute(builder: (_) => OwnerProfileView()));
                 },
                 child: Text(
                   'Contact Owner',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 10),
                 ),
               ),
             ),
-    Row(
-      children: <Widget>[
-        Text("data")
-      ],
-    )
+    // Row(
+    //   children: <Widget>[
+    //     Text("data")
+    //   ],
+    // )
   ],
 )
     );
