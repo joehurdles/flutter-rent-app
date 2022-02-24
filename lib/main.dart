@@ -5,6 +5,7 @@ import 'package:rent/views/login_view.dart';
 import 'package:rent/views/house_view.dart';
 import 'package:rent/views/card_view.dart';
 import 'package:rent/views/OwnerProfile.dart';
+import 'package:rent/views/swipe_card.dart';
 
 //import 'package:rent/views/page_view.dart';
 void main(){
@@ -21,7 +22,7 @@ class brent extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home:CardView(),
+      home:MyHomePage(),
     );
   }
 }
