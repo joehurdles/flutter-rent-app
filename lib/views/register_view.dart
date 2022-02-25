@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rent/views/house_view.dart';
 import 'package:rent/services/api_manager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:rent/views/swipe_card.dart';
 
 Future<SignUp> createSignup(String firstName, String lastName, String location, String email, String password) async {
      final response = await http.post(
@@ -221,7 +222,7 @@ Column buildColumn() {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HouseView()));
+                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
                 },
                 child: Text(
                   'Register',

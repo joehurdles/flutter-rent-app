@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rent/views/house_view.dart';
 import 'package:http/http.dart' as http;
+import 'package:rent/views/register_view.dart';
 import 'dart:convert';
+
+import 'package:rent/views/swipe_card.dart';
 
 
 Future<SignIn> createLogin(String email, String password) async {
@@ -142,8 +144,8 @@ Column buildColumn() {
                     print(_controller1.text);
                _futureSignin = createLogin(_controller.text, _controller1.text);
             });
-                  // Navigator.push(
-                  //     context, MaterialPageRoute(builder: (_) => WelcomeView()));
+                   Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
                 },
                 child: Text(
                   'Login',
@@ -176,7 +178,7 @@ Column buildColumn() {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HouseView()));
+                      context, MaterialPageRoute(builder: (_) => RegisterView()));
                 },
                 child: Text(
                   'Register',

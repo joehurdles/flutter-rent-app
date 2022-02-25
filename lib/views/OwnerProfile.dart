@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent/services/api_manager.dart';
+import 'package:rent/views/card_view.dart';
 
 class OwnerProfileView extends StatelessWidget {
   const OwnerProfileView({ Key? key }) : super(key: key);
@@ -12,7 +13,8 @@ class OwnerProfileView extends StatelessWidget {
       backgroundColor: Colors.white,
       centerTitle: true,
       iconTheme: IconThemeData(color: Colors.black),
-      leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back) ),
+      leading: IconButton(onPressed: (){Navigator.push(
+                      context, MaterialPageRoute(builder: (_) =>  CardView()));}, icon: Icon(Icons.arrow_back) ),
       title: const Text(
         "Owner's Profile",
       style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Colors.black),),
