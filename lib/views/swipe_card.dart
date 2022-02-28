@@ -20,7 +20,13 @@ class MyHomePage extends StatelessWidget {
         title: Text("brent"),
       ),
       
-        body: Center(child: SwipeList()),
+        body: Center(child: Row(
+          // mainAxisAlignment: MainAxisAlignment.start,,crossAxisAlignment: CrossAxisAlignment.center,verticalDirection: VerticalDirection.down,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(child: Search()), 
+            SwipeList(),          ],
+        )),
         drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -86,6 +92,34 @@ class MyHomePage extends StatelessWidget {
         );
   }
 }
+class Search extends StatelessWidget {
+  const Search({Key? key}) : super(key: key);
+
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	body: Padding(
+  padding: EdgeInsets.only(top: 16,left: 16,right: 16),
+  child: TextField(
+    decoration: InputDecoration(
+      hintText: "Search...",
+      hintStyle: TextStyle(color: Colors.grey.shade600),
+      prefixIcon: Icon(Icons.search,color: Colors.grey.shade600, size: 20,),
+      filled: true,
+      fillColor: Colors.grey.shade100,
+      contentPadding: EdgeInsets.all(8),
+      enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(
+              color: Colors.grey.shade100
+          )
+      ),
+    ),
+  ),
+),
+  );
+}
+}
 
 class SwipeList extends StatefulWidget {
   @override
@@ -96,94 +130,101 @@ class SwipeList extends StatefulWidget {
 
 class ListItemWidget extends State<SwipeList> {
   List items = getDummyList();
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return Dismissible(
-              key: Key(items[index]),
-              background: Container(
-                alignment: AlignmentDirectional.centerEnd,
-                color: Colors.red,
-                child: Icon(
-                  Icons.delete,
-                  color: Colors.white,
-                ),
-              ),
-              
-              onDismissed: (direction) {
-                setState(() {
-                  items.removeAt(index);
-                });
-              },
-              direction: DismissDirection.endToStart,
-              child: FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => CardView()));
-                },
-              
-              child: Card(
-                  margin: EdgeInsets.only(left: 10, right: 10, top: 12),
-                  elevation: 8,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
+        child: Expanded(
+          child: SizedBox(
+            height: 100,
+            child: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return Dismissible(
+                key: Key(items[index]),
+                background: Container(
+                  alignment: AlignmentDirectional.centerEnd,
+                  color: Colors.red,
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.white,
                   ),
-                  semanticContainer: true,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: Container(
-                    height: 250,
-                    child: Stack(children: <Widget>[
-                      Positioned(
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                              color: Colors.white,
+                ),
+                
+                onDismissed: (direction) {
+                  setState(() {
+                    items.removeAt(index);
+                  });
+                },
+                direction: DismissDirection.endToStart,
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => CardView()));
+                  },
+                   child: Card(
+                    margin: EdgeInsets.only(left: 10, right: 10, top: 12),
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    semanticContainer: true,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Container(
+                      height: 250,
+                      child: Stack(children: <Widget>[
+                        Positioned(
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                                color: Colors.white,
+                                child: Column(
+                                  children: <Widget>[
+                                    Image.network(
+                                      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+                                      fit: BoxFit.fitHeight,
+                                    ),
+                                  ],
+                                ))),
+                                 Positioned(
+                            top: 20,
+                            left: 0,
+                            right: 0,
+                            child: Container(
                               child: Column(
                                 children: <Widget>[
-                                  Image.network(
-                                    'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                                    fit: BoxFit.fitHeight,
-                                  ),
+                                  Text(items[index],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white),
+                                      textAlign: TextAlign.center),
                                 ],
-                              ))),
-                               Positioned(
-                          top: 20,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            child: Column(
-                              children: <Widget>[
-                                Text(items[index],
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Colors.white),
-                                    textAlign: TextAlign.center),
-                              ],
+                              ),
+                            )
                             ),
-                          )
-                          ),
-                    ]
-                    ),
-                  )
-                  ),
-            )
-            );
-          },
-        )
-        );
+                      ]
+                      ),
+                    )
+                    ),),
+          );
+          
+            },)
+          
+                
+               
+              ),
+    ));
+            }
+          
+        
   }
 
-  static List getDummyList() {
+  List getDummyList() {
     List list = List.generate(1, (i) {
       return "Item ${i + 1}";
     });
     print(list);
     return list;
   }
-}
