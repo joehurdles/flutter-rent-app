@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rent/views/welcome_view.dart';
+import 'package:rent/views/ownerViewProfile.dart';
 
 class LandlordRegisterView extends StatelessWidget {
   const LandlordRegisterView({ Key? key }) : super(key: key);
@@ -116,7 +116,7 @@ class LandlordRegisterView extends StatelessWidget {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => WelcomeView()));
+                      context, MaterialPageRoute(builder: (_) => OwnerProfile()));
                 },
                 child: Text(
                   'Register As Landlord',
