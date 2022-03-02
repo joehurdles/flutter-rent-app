@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:rent/views/landlord_register.dart';
 import 'package:rent/views/swipe_card.dart';
 import 'package:rent/views/welcome_view.dart';
 import 'package:rent/views/OwnerProfile.dart';
@@ -103,6 +104,27 @@ List<T> map<T>(List list, Function handler) {
                 },
                 child: Text(
                   'Contact Owner',
+                  style: TextStyle(color: Colors.white, fontSize: 10),
+                ),
+              ),
+            ),
+
+SizedBox(
+              height: 40,
+           ),
+
+            Container(
+              height: 35,
+              width: 300,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                },
+                child: Text(
+                  'Register As Property Owner',
                   style: TextStyle(color: Colors.white, fontSize: 10),
                 ),
               ),

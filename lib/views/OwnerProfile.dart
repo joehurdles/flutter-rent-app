@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rent/services/api_manager.dart';
 import 'package:rent/views/card_view.dart';
+import 'package:rent/views/chat_view.dart';
+import 'package:rent/views/landlord_register.dart';
 
 class OwnerProfileView extends StatelessWidget {
   const OwnerProfileView({ Key? key }) : super(key: key);
@@ -54,7 +56,8 @@ class OwnerProfileView extends StatelessWidget {
         subtitle: Text('+233245313051', style:TextStyle(fontSize:16,fontWeight: FontWeight.w500, color: Colors.grey),
         ),
         trailing: Row(mainAxisSize: MainAxisSize.min,
-          children: [TextButton(onPressed: (){}, child: const Icon(Icons.message)),
+          children: [TextButton(onPressed: (){Navigator.push(
+                      context, MaterialPageRoute(builder: (_) =>  ChatBubble(isCurrentUser: null!, text: '',)));}, child: const Icon(Icons.message)),
           TextButton(onPressed: (){}, child: const Icon(Icons.call))
           ]
           
@@ -80,7 +83,27 @@ class OwnerProfileView extends StatelessWidget {
           ]
         ), 
           ),
-        ],
+          SizedBox(
+              height: 40,
+           ),
+
+            Container(
+              height: 35,
+              width: 80,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: FlatButton(
+                onPressed: () {
+                  // Navigator.push(
+                  //     context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                },
+                child: Text(
+                  'Request For A Virtual Tour',
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ),
+            ),
+            ],
        ),
    );
   }

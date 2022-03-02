@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rent/noti_view.dart';
+import 'package:rent/views/chat_view.dart';
+import 'package:rent/views/dual_register.dart';
+import 'package:rent/views/landlord_login.dart';
+import 'package:rent/views/landlord_register.dart';
 import 'package:rent/views/search_view.dart';
 import 'package:rent/views/welcome_view.dart';
 import 'package:rent/views/register_view.dart';
@@ -24,7 +28,7 @@ class Brent extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home:MyHomePage(),
+      home:LandlordLogin(),
     );
   }
 }

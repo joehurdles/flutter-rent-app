@@ -20,12 +20,13 @@ class MyHomePage extends StatelessWidget {
         title: Text("brent"),
       ),
       
-        body: Center(child: Row(
-          // mainAxisAlignment: MainAxisAlignment.start,,crossAxisAlignment: CrossAxisAlignment.center,verticalDirection: VerticalDirection.down,
+        body: Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Expanded(child: Search()), 
-            SwipeList(),          ],
+             Search(),
+             SizedBox(height: 10,),
+          Expanded (child: SwipeList()),          ],
         )),
         drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -97,8 +98,8 @@ class Search extends StatelessWidget {
 
 @override
 Widget build(BuildContext context) {
-	return Scaffold(
-	body: Padding(
+	return Container(
+	child:Padding(
   padding: EdgeInsets.only(top: 16,left: 16,right: 16),
   child: TextField(
     decoration: InputDecoration(
@@ -129,7 +130,7 @@ class SwipeList extends StatefulWidget {
 }
 
 class ListItemWidget extends State<SwipeList> {
-  List items = getDummyList();
+  List house = getDummyList();
   
   @override
   Widget build(BuildContext context) {
@@ -138,10 +139,10 @@ class ListItemWidget extends State<SwipeList> {
           child: SizedBox(
             height: 100,
             child: ListView.builder(
-            itemCount: items.length,
+            itemCount: house.length,
             itemBuilder: (context, index) {
               return Dismissible(
-                key: Key(items[index]),
+                key: Key(house[index]),
                 background: Container(
                   alignment: AlignmentDirectional.centerEnd,
                   color: Colors.red,
@@ -153,7 +154,7 @@ class ListItemWidget extends State<SwipeList> {
                 
                 onDismissed: (direction) {
                   setState(() {
-                    items.removeAt(index);
+                    house.removeAt(index);
                   });
                 },
                 direction: DismissDirection.endToStart,
@@ -194,7 +195,7 @@ class ListItemWidget extends State<SwipeList> {
                             child: Container(
                               child: Column(
                                 children: <Widget>[
-                                  Text(items[index],
+                                  Text(house[index],
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15,
@@ -223,7 +224,7 @@ class ListItemWidget extends State<SwipeList> {
 
   List getDummyList() {
     List list = List.generate(1, (i) {
-      return "Item ${i + 1}";
+      return "House ${i + 1}";
     });
     print(list);
     return list;
