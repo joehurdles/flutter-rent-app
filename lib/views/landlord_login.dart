@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent/views/landlord_register.dart';
+import 'package:rent/views/ownerViewProfile.dart';
 import 'package:rent/views/welcome_view.dart';
 
 class LandlordLogin extends StatefulWidget {
@@ -75,7 +76,7 @@ class _LandlordLoginState extends State<LandlordLogin> {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => WelcomeView()));
+                      context, MaterialPageRoute(builder: (_) => OwnerProfile()));
                 },
                 child: Text(
                   'Login',

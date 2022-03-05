@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rent/views/landlord_login.dart';
 import 'package:rent/views/landlord_register.dart';
+import 'package:rent/views/login_view.dart';
 import 'package:rent/views/register_view.dart';
 
 class DualRegisterView extends StatelessWidget {
@@ -28,9 +30,46 @@ class DualRegisterView extends StatelessWidget {
       padding: EdgeInsets.all(10),
       
         children: [
+           Container(
+              height: 35,
+              width: 100,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => LandlordLogin()));
+                },
+                child: Text(
+                  'LogIn As Property Owner',
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ),
+            ),
+            
+             SizedBox(
+              height: 40,
+           ),
+
+             Container(
+              height: 35,
+              width: 100,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => Login()));
+                },
+                child: Text(
+                  'LogIn As Tenant',
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ),
+            ),
 
           SizedBox(
-              height: 200,
+              height: 100,
            ),
 
              Container(

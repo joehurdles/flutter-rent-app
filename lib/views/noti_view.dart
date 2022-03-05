@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rent/views/swipe_card.dart';
 
 class Notifications extends StatelessWidget {
+  const Notifications({Key? key}) : super(key: key);
+
 @override
 Widget build(BuildContext context) {
 	return Scaffold(

@@ -1,98 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:rent/views/card_view.dart';
+import 'package:rent/views/home_view.dart';
+
+import 'noti_view.dart';
 
 
-class MyHomePage extends StatelessWidget {
+
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    int _selectedIndex=0;
+
+   List<Widget> _widgetOptions = <Widget>[
+     HomeView(),
+     Notifications(),
+     
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
     return Scaffold(
-        appBar: AppBar(
-      //    leadingWidth: 60,
-      // leading:  Padding(
-      //   padding: const EdgeInsets.only(left: 28.0),
-      //   child: CircleAvatar(
-      //         radius: 30,
-      //         child: Image.asset('assets/images/loyalKenss.png')
-      //        // backgroundImage: NetworkImage('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')
-          
-      //       ),
-      // ),
-        title: Text("brent"),
+        body: IndexedStack(
+        index: _selectedIndex,
+        children: _widgetOptions,
+      ),          
+       
+     bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
-      
-        body: Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-             Search(),
-             SizedBox(height: 10,),
-          Expanded (child: SwipeList()),          ],
-        )),
-        drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-              ),
-              child: Text('Brent'),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('About Us'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Contact Us'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Terms And Conditions'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('LogOut'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
-        );
+
+
+    );
   }
 }
+
+
 class Search extends StatelessWidget {
   const Search({Key? key}) : super(key: key);
 
@@ -123,6 +91,8 @@ Widget build(BuildContext context) {
 }
 
 class SwipeList extends StatefulWidget {
+  const SwipeList({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return ListItemWidget();
@@ -216,7 +186,8 @@ class ListItemWidget extends State<SwipeList> {
                 
                
               ),
-    ));
+    )
+    );
             }
           
         
