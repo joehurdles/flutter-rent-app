@@ -1,66 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:rent/views/register_view.dart';
-import 'dart:convert';
+import 'package:rent/views/landlord_register.dart';
+import 'package:rent/views/ownerViewProfile.dart';
+import 'package:rent/views/welcome_view.dart';
 
-import 'package:rent/views/swipe_card.dart';
-
-
-Future<SignIn> createLogin(String email, String password) async {
-     final response = await http.post(
-    Uri.parse('http://brnt-bac.herokuapp.com/api/users/landlord/sign-in'),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-      
-    },
-    body: jsonEncode(<String, String>{
-      'email': email,
-      'password': password
-    }),
-  );
-   
-   if (response.statusCode == 200) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
-    print(jsonDecode(response.body)['success']);   
-    return SignIn.fromJson(jsonDecode(response.body)['success']);
-
-  } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create album.');
-  }
-   
-    
-  }
-
-class SignIn {
-  final int id;
-  final String email;
-  final String password;
-
-  const SignIn({required this.id, required this.email, required this.password});
-
-  factory SignIn.fromJson(Map<String, dynamic> json) {
-    return SignIn(
-      id: json['id'],
-      email: json['email'],
-      password: json['password'],
-    );
-  }
-}
-
-class Login extends StatefulWidget {
+class LandlordLogin extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LandlordLoginState createState() => _LandlordLoginState();
 }
 
-class _LoginState extends State<Login> {
-  final TextEditingController _controller = TextEditingController();
-  final TextEditingController _controller1 = TextEditingController();
-  Future<SignIn>? _futureSignin;
-  
-
+class _LandlordLoginState extends State<LandlordLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,18 +26,8 @@ class _LoginState extends State<Login> {
       ),
         title: Text("brent"),
       ),
-      body: Container(
-     alignment: Alignment.center,
-          padding: const EdgeInsets.all(8.0),
-         child: (_futureSignin == null) ? buildColumn() : buildFutureBuilder(),
-      ),
-      
-    );
- }
-
-Column buildColumn() {
-  
-  return Column(
+      body: SingleChildScrollView(
+        child: Column(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -108,7 +46,6 @@ Column buildColumn() {
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                controller: _controller,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
@@ -120,7 +57,7 @@ Column buildColumn() {
                   left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                controller: _controller1,
+
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -138,14 +75,8 @@ Column buildColumn() {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
-                  
-                  setState(() {
-                    print(_controller.text);
-                    print(_controller1.text);
-               _futureSignin = createLogin(_controller.text, _controller1.text);
-            });
-                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => OwnerProfile()));
                 },
                 child: Text(
                   'Login',
@@ -178,7 +109,7 @@ Column buildColumn() {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => RegisterView()));
+                      context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
                 },
                 child: Text(
                   'Register',
@@ -188,29 +119,8 @@ Column buildColumn() {
             ),
 
           ],
-        );
-}
-
-FutureBuilder<SignIn> buildFutureBuilder( ){
-
-
-  return FutureBuilder<SignIn>(
-
-      future:  _futureSignin,
-      builder: (context, snapshot) {
-       
-        print(snapshot);
-
-        if (snapshot.hasData) {
-          return Text('Success!');
-        } else if (snapshot.hasError) {
-          return Text('xxxx');
-        }
-
-        return const CircularProgressIndicator();
-      },
+        ),
+      ),
     );
-}
-
-
+  }
 }
