@@ -30,6 +30,7 @@ class HomeView extends StatelessWidget {
           Expanded (child: SwipeList()),          ],
         )),
         drawer: Drawer(
+          
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
@@ -61,23 +62,20 @@ class HomeView extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            ListTile(
-              title: const Text('Contact Us'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Services'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
+            ExpansionTile(
+              title: Text('Services'),
+          // subtitle: Text('Leading expansion arrow icon'),
+              children:[ ListTile(
+                title: const Text('For all your carpentry, masonary and plumbing works call us on 0245313051 or 0245313051 or 0245313051'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              
+              ]
             ),
             ListTile(
               title: const Text('Terms And Conditions'),
@@ -100,8 +98,6 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
-
-    
     );
   }
 }
