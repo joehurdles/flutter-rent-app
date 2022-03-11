@@ -27,7 +27,7 @@ class HomeView extends StatelessWidget {
           children: [
              Search(),
              SizedBox(height: 10,),
-          Expanded (child: SwipeList()),          ],
+          Expanded (child: SwipeList()),],
         )),
         drawer: Drawer(
           
@@ -62,11 +62,105 @@ class HomeView extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+             ExpansionTile(
+              title: const Text('Contact Us'),
+          // subtitle: Text('Call us on 0249636007 or 0545008662 or 0245313051 for these services.'),
+              children:[ 
+                ListTile(
+                title: const Text('0249636007'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('0545008662'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('0245313051'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ), 
+              ]
+            ),
             ExpansionTile(
-              title: Text('Services'),
-          // subtitle: Text('Leading expansion arrow icon'),
-              children:[ ListTile(
-                title: const Text('For all your carpentry, masonary and plumbing works call us on 0245313051 or 0245313051 or 0245313051'),
+              title: const Text('Services'),
+          // subtitle: Text('Call us on 0249636007 or 0545008662 or 0245313051 for these services.'),
+              children:[ 
+                ListTile(
+                title: const Text('Carpentry'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ExpansionTile(
+              title: const Text('Civil Works'),
+          // subtitle: Text('Call us on 0249636007 or 0545008662 or 0245313051 for these services.'),
+              children:[ 
+                ListTile(
+                title: const Text('Masonary'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Block Sales'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+               ]
+            ),
+              ListTile(
+                title: const Text('Plumbing'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Electrical Works'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Installations'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Cleaning and Weeding services'),
                 onTap: () {
                   // Update the state of the app
                   // ...

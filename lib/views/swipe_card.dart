@@ -42,12 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.room_service),
+            label: 'Services',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -171,6 +171,19 @@ class ListItemWidget extends State<SwipeList> {
                                           fontSize: 15,
                                           color: Colors.white),
                                       textAlign: TextAlign.center),
+                                       SizedBox(
+                                       height: 150,
+                                         ),
+                                      ListTile(
+                                 title: Text('Description:', style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white),),
+                              subtitle: Text('Location:', style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white),),
+                             ),
                                 ],
                               ),
                             )
@@ -195,7 +208,8 @@ class ListItemWidget extends State<SwipeList> {
 
   List getDummyList() {
     List list = List.generate(1, (i) {
-      return "House ${i + 1}";
+      return
+       "";
     });
     print(list);
     return list;
