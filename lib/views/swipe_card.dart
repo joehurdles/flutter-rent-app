@@ -18,8 +18,8 @@ class _MyHomePageState extends State<MyHomePage> {
     int _selectedIndex=0;
 
    List<Widget> _widgetOptions = <Widget>[
-     HomeView(),
-     Notifications(),
+     const HomeView(),
+     const Notifications(),
      
   ];
 
@@ -68,7 +68,7 @@ class Search extends StatelessWidget {
 Widget build(BuildContext context) {
 	return Container(
 	child:Padding(
-  padding: EdgeInsets.only(top: 16,left: 16,right: 16),
+  padding: const EdgeInsets.only(top: 16,left: 16,right: 16),
   child: TextField(
     decoration: InputDecoration(
       hintText: "Search...",
@@ -76,7 +76,7 @@ Widget build(BuildContext context) {
       prefixIcon: Icon(Icons.search,color: Colors.grey.shade600, size: 20,),
       filled: true,
       fillColor: Colors.grey.shade100,
-      contentPadding: EdgeInsets.all(8),
+      contentPadding: const EdgeInsets.all(8),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(
@@ -116,7 +116,7 @@ class ListItemWidget extends State<SwipeList> {
                 background: Container(
                   alignment: AlignmentDirectional.centerEnd,
                   color: Colors.red,
-                  child: Icon(
+                  child: const Icon(
                     Icons.delete,
                     color: Colors.white,
                   ),
@@ -134,7 +134,7 @@ class ListItemWidget extends State<SwipeList> {
                         context, MaterialPageRoute(builder: (_) => CardView()));
                   },
                    child: Card(
-                    margin: EdgeInsets.only(left: 10, right: 10, top: 12),
+                    margin: const EdgeInsets.only(left: 10, right: 10, top: 12),
                     elevation: 8,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
@@ -166,7 +166,7 @@ class ListItemWidget extends State<SwipeList> {
                               child: Column(
                                 children: <Widget>[
                                   Text(house[index],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15,
                                           color: Colors.white),
