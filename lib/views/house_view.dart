@@ -7,6 +7,7 @@ import 'package:rent/views/welcome_view.dart';
 class HouseView extends StatelessWidget {
   // const HouseView({ Key? key }) : super(key: key);
   APIManager apiService = APIManager();
+  static const routeName = '/house';
 
   HouseView({Key? key}) : super(key: key);
   
