@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rent/views/landlord_register.dart';
 import 'package:rent/views/swipe_card.dart';
-import 'package:rent/views/welcome_view.dart';
 import 'package:rent/views/OwnerProfile.dart';
 import 'package:rent/views/item1.dart';
 import 'package:rent/views/item2.dart';
@@ -20,13 +19,12 @@ class CardView extends StatefulWidget {
 
 class _CardViewState extends State<CardView> {
 
- int _currentIndex=0;
 List cardList=[
-    Item1(),
-    Item2(),
-    Item3(),
-    Item4(),
-    Item5()
+    const Item1(),
+    const Item2(),
+    const Item3(),
+    const Item4(),
+    const Item5()
   ];
 List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -42,7 +40,7 @@ List<T> map<T>(List list, Function handler) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(leading: IconButton(onPressed: (){Navigator.push(
-                      context, MaterialPageRoute(builder: (_) =>  MyHomePage()));}, icon: Icon(Icons.arrow_back) ),
+                      context, MaterialPageRoute(builder: (_) =>  MyHomePage()));}, icon: const Icon(Icons.arrow_back) ),
 
       //    leadingWidth: 60,
       // leading:  Padding(
@@ -54,7 +52,7 @@ List<T> map<T>(List list, Function handler) {
           
       //       ),
       // ),
-        title: Text("brent"),
+        title: const Text("brent"),
       ),
 
       body: Column(
@@ -63,21 +61,20 @@ List<T> map<T>(List list, Function handler) {
          options: CarouselOptions(
                 height: 500.0,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 5),
-                autoPlayAnimationDuration: Duration(milliseconds: 5000),
+                autoPlayInterval: const Duration(seconds: 5),
+                autoPlayAnimationDuration: const Duration(milliseconds: 5000),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 pauseAutoPlayOnTouch: true,
                 aspectRatio: 2.0,
                 onPageChanged: (index, reason) {
                   setState(() {
-                    _currentIndex = index;
                   });
                 },
               ),
               items: cardList.map((card){
                 return Builder(
                   builder:(BuildContext context){
-                    return Container(
+                    return SizedBox(
                       height: MediaQuery.of(context).size.height*0.30,
                       width: MediaQuery.of(context).size.width,
                       child: Card(
@@ -89,7 +86,7 @@ List<T> map<T>(List list, Function handler) {
                 );
               }).toList(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
            ),
      Container(
@@ -100,16 +97,16 @@ List<T> map<T>(List list, Function handler) {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => OwnerProfileView()));
+                      context, MaterialPageRoute(builder: (_) => const OwnerProfileView()));
                 },
-                child: Text(
+                child: const Text(
                   'Contact Owner',
                   style: TextStyle(color: Colors.white, fontSize: 10),
                 ),
               ),
             ),
 
-SizedBox(
+const SizedBox(
               height: 40,
            ),
 
@@ -121,9 +118,9 @@ SizedBox(
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                      context, MaterialPageRoute(builder: (_) => const LandlordRegisterView()));
                 },
-                child: Text(
+                child: const Text(
                   'Register As Property Owner',
                   style: TextStyle(color: Colors.white, fontSize: 10),
                 ),

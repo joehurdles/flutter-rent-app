@@ -24,12 +24,13 @@ class HomeView extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
+        // ignore: prefer_const_literals_to_create_immutables
         children: [
-          Search(),
-          SizedBox(
+          const Search(),
+          const SizedBox(
             height: 10,
           ),
-          Expanded(child: SwipeList()),
+          const Expanded(child: SwipeList()),
         ],
       )),
       drawer: Drawer(

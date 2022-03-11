@@ -19,14 +19,14 @@ class LandlordRegisterView extends StatelessWidget {
           
             ),
       ),
-        title: Text("brent"),
+        title: const Text("brent"),
       ),
        body:
         ListView(
 
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
         children: [
-        Padding( 
+        const Padding( 
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
@@ -36,10 +36,10 @@ class LandlordRegisterView extends StatelessWidget {
                     hintText: 'Enter your first name'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
            ),
-             Padding(
+             const Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
@@ -49,10 +49,10 @@ class LandlordRegisterView extends StatelessWidget {
                     hintText: 'Enter your Surname'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
            ),
-             Padding(
+             const Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
@@ -62,10 +62,10 @@ class LandlordRegisterView extends StatelessWidget {
                     hintText: 'Enter place name.'),
               ),
             ),
-             SizedBox(
+             const SizedBox(
               height: 20,
            ),
-             Padding(
+             const Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
@@ -75,10 +75,10 @@ class LandlordRegisterView extends StatelessWidget {
                     hintText: 'name@example.com'),
               ),
             ),
-             SizedBox(
+             const SizedBox(
               height: 20,
            ),
-             Padding(
+             const Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
@@ -88,10 +88,10 @@ class LandlordRegisterView extends StatelessWidget {
                     hintText: 'Enter your password.'),
               ),
             ),
-             SizedBox(
+             const SizedBox(
               height: 20,
            ),
-             Padding(
+             const Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
@@ -101,11 +101,11 @@ class LandlordRegisterView extends StatelessWidget {
                     hintText: 'Confirm your password.'),
               ),
             ),
-              SizedBox(
+              const SizedBox(
               height: 20,
            ),
-            Text("AGREE TO TERMS AND CONDITIONS"),
-             SizedBox(
+            const Text("AGREE TO TERMS AND CONDITIONS"),
+             const SizedBox(
               height: 20,
            ),
              Container(
@@ -116,18 +116,18 @@ class LandlordRegisterView extends StatelessWidget {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => OwnerProfile()));
+                      context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
                 },
-                child: Text(
+                child: const Text(
                   'Register As Landlord',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ),
             ),
-             SizedBox(
+             const SizedBox(
               height: 30,
            ),
-            Text("Already have an account?Login"),
+            const Text("Already have an account?Login"),
 
          ]
           )

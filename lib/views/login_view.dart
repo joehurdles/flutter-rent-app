@@ -12,6 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -30,7 +32,7 @@ class _LoginState extends State<Login> {
   var jsonData = null;
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   final response = await http.post(
-    Uri.parse('http://brnt-bac.herokuapp.com/api/users/landlord/sign-in'),
+    Uri.parse('http://brnt-bac.herokuapp.com/api/users/tenant/sign-in'),
     // headers: <String, String>{
     //   'Content-Type': 'application/json; charset=UTF-8',
     //   'Accept': 'application/json',
@@ -48,9 +50,10 @@ class _LoginState extends State<Login> {
       // Navigator.of(context).pushNamedAndRemoveUntil(HouseView(), (Route<dynamic> route ) => false);
       Navigator.push(context, MaterialPageRoute(builder: (_) => const HomeView()));
                 
-      print('success!');
+      
     });
-    print(jsonData['token']);
+    
+    
    
   } else {
     // If the server did not return a 201 CREATED response,
@@ -74,12 +77,12 @@ class _LoginState extends State<Login> {
 
               ),
         ),
-        title: Text("brent"),
+        title: const Text("brent"),
       ),
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),
-        child: isLoading ? Center(child:  CircularProgressIndicator()) : buildColumn(),
+        child: isLoading ? const Center(child:  CircularProgressIndicator()) : buildColumn(),
         
       ),
     );
@@ -91,7 +94,7 @@ class _LoginState extends State<Login> {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Center(
-            child: Container(
+            child: SizedBox(
                 width: 100,
                 height: 200,
                 /*decoration: BoxDecoration(
@@ -102,10 +105,10 @@ class _LoginState extends State<Login> {
         ),
         Padding(
           //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: TextField(
             controller: _controller,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Email',
                 hintText: 'Enter valid email id as abc@gmail.com'),
@@ -118,13 +121,13 @@ class _LoginState extends State<Login> {
           child: TextField(
             controller: _controller1,
             obscureText: true,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Password',
                 hintText: 'Enter secure password'),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Container(
@@ -142,26 +145,26 @@ class _LoginState extends State<Login> {
               // Navigator.push(
               //     context, MaterialPageRoute(builder: (_) => MyHomePage()));
             },
-            child: Text(
+            child: const Text(
               'Login',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         FlatButton(
           onPressed: () {
-            //TODO FORGOT PASSWORD SCREEN GOES HERE
+            // FORGOT PASSWORD SCREEN GOES HERE
           },
-          child: Text(
+          child: const Text(
             'Forgot Password',
             style: TextStyle(color: Colors.blue, fontSize: 15),
           ),
         ),
-        Text("Don't have an account?"),
-        SizedBox(
+        const Text("Don't have an account?"),
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -174,7 +177,7 @@ class _LoginState extends State<Login> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (_) => RegisterView()));
             },
-            child: Text(
+            child: const Text(
               'Register',
               style: TextStyle(color: Colors.white, fontSize: 15),
             ),
