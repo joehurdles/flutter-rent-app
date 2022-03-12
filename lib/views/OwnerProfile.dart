@@ -104,7 +104,7 @@ class OwnerProfileView extends StatelessWidget {
               ),
             ),
             ],
-       ),
+       ),   
    );
   }
 }
