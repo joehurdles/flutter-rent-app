@@ -51,12 +51,12 @@ class HouseView extends StatelessWidget {
           
           leading: Image.asset('assets/images/loyalKenss.png'),
            title: Text(description, 
-           style:TextStyle(
+           style:const TextStyle(
              fontSize:15,
              fontWeight: FontWeight.w800, 
              color: Colors.black),
              ),
-             subtitle: Text("Location: "+location, style:TextStyle(fontSize:12,fontWeight: FontWeight.w500, color: Colors.black),
+             subtitle: Text("Location: "+location, style:const TextStyle(fontSize:12,fontWeight: FontWeight.w500, color: Colors.black),
         ),
            trailing: Row(
           mainAxisSize: MainAxisSize.min,
