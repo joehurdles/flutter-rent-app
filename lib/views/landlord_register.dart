@@ -1,8 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:rent/views/ownerViewProfile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LandlordRegisterView extends StatelessWidget {
-  const LandlordRegisterView({ Key? key }) : super(key: key);
+  LandlordRegisterView({ Key? key }) : super(key: key);
+  bool isLoading =false;
+
+  final TextEditingController _firstName = TextEditingController();
+  final TextEditingController _lastName = TextEditingController();
+  final TextEditingController _otherNames = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
+  registerLandlord(String firstName, String lastName, String otherNames, String phone, String email, String password) async {
+  Map data = {
+    'first_name': firstName,
+    'last_name': lastName,
+    'other_names': otherNames,
+    'phone': phone,
+    'email': email,
+    'password': password,
+  };
+  var jsonData = null;
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  final response = await http.post(
+    Uri.parse('http://brnt-bac.herokuapp.com/api/users/landlord/sign-up'),
+    // headers: <String, String>{
+    //   'Content-Type': 'application/json; charset=UTF-8',
+    //   'Accept': 'application/json',
+    // },
+    body: data,
+  );
+
+  if (response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    var jsonData = json.decode(response.body);
+  
+      isLoading =false;
+      sharedPreferences.setString("token", jsonData['token']);
+      // Navigator.of(context).pushNamedAndRemoveUntil(HouseView(), (Route<dynamic> route ) => false);
+      print(jsonData['token']);
+      
+
+    
+    
+   
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create album.');
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +78,12 @@ class LandlordRegisterView extends StatelessWidget {
 
       padding: const EdgeInsets.all(10),
         children: [
-        const Padding( 
+        Padding( 
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _firstName,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'FirstName',
                     hintText: 'Enter your first name'),
@@ -39,11 +92,12 @@ class LandlordRegisterView extends StatelessWidget {
             const SizedBox(
               height: 20,
            ),
-             const Padding(
+             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _lastName,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'LastName',
                     hintText: 'Enter your Surname'),
@@ -52,24 +106,41 @@ class LandlordRegisterView extends StatelessWidget {
             const SizedBox(
               height: 20,
            ),
-             const Padding(
+           Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _otherNames,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Location',
-                    hintText: 'Enter place name.'),
+                    labelText: 'otherNames',
+                    hintText: 'Enter your Other Name'),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+           ),
+             Padding(
+              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: TextField(
+                controller: _phone,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Phone',
+                    hintText: '024444444'
+                    ),
               ),
             ),
              const SizedBox(
               height: 20,
            ),
-             const Padding(
+             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _email,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'E-mail',
                     hintText: 'name@example.com'),
@@ -78,11 +149,12 @@ class LandlordRegisterView extends StatelessWidget {
              const SizedBox(
               height: 20,
            ),
-             const Padding(
+             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _password,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'New Password',
                     hintText: 'Enter your password.'),
@@ -91,11 +163,13 @@ class LandlordRegisterView extends StatelessWidget {
              const SizedBox(
               height: 20,
            ),
-             const Padding(
+             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _password,
+                decoration: const InputDecoration(
+
                     border: OutlineInputBorder(),
                     labelText: 'Re-Enter Password',
                     hintText: 'Confirm your password.'),
@@ -115,9 +189,18 @@ class LandlordRegisterView extends StatelessWidget {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
-                },
+              
+                isLoading = true;
+             
+              registerLandlord(_firstName.text, _lastName.text, _otherNames.text, _phone.text, _email.text, _password.text);
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (_) => MyHomePage()));
+            },
+
+                // onPressed: () {
+                //   Navigator.push(
+                //       context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
+                // },
                 child: const Text(
                   'Register As Landlord',
                   style: TextStyle(color: Colors.white, fontSize: 15),
