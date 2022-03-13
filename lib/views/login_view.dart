@@ -31,7 +31,9 @@ class _LoginState extends State<Login> {
   };
   var jsonData = null;
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  final response = await http.post(
+
+  try{
+    final response = await http.post(
     Uri.parse('http://brnt-bac.herokuapp.com/api/users/tenant/sign-in'),
     // headers: <String, String>{
     //   'Content-Type': 'application/json; charset=UTF-8',
@@ -56,9 +58,41 @@ class _LoginState extends State<Login> {
     
    
   } else {
-    var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
+    setState((){
+      isLoading =false;
+        var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+       });
+  
   }
+
+  }catch (e){
+
+    if(e.toString() == "Expected a value of type 'String', but got one of type 'Null'"){
+      setState((){
+      isLoading =false;
+        var snackBar = const SnackBar(content: Text('fields can not be empty!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+       });
+      
+
+    }else{
+      setState((){
+      isLoading =false;
+      var snackBar = SnackBar(content: Text(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+       });
+      
+      
+    }
+
+  }
+  
+
+
+
 }
   
 
@@ -81,7 +115,7 @@ class _LoginState extends State<Login> {
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),
-        child: isLoading ? const Center(child:  CircularProgressIndicator()) : buildColumn(),
+        child: buildColumn(),
         
       ),
     );
@@ -144,7 +178,7 @@ class _LoginState extends State<Login> {
               // Navigator.push(
               //     context, MaterialPageRoute(builder: (_) => MyHomePage()));
             },
-            child: const Text(
+            child: isLoading ? const Center(child:  CircularProgressIndicator()) : const Text(
               'Login',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),

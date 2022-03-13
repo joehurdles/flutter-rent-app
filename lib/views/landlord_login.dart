@@ -51,17 +51,36 @@ class _LandlordLoginState extends State<LandlordLogin> {
     
    
   } else {
+    setState((){
+      isLoading =false;
       var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
+      
+    
+    
+      
       
 
   }
   }catch (e){
+    
     if(e.toString() == "Expected a value of type 'String', but got one of type 'Null'"){
+
+      setState((){
+      isLoading =false;
       var snackBar = const SnackBar(content: Text('fields can not be empty!'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    });
+      
 
     }else{
+
+       setState((){
+      isLoading =false;
+
+       });
       var snackBar = SnackBar(content: Text(e.toString()));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       
@@ -156,7 +175,7 @@ class _LandlordLoginState extends State<LandlordLogin> {
               // Navigator.push(
               //     context, MaterialPageRoute(builder: (_) => MyHomePage()));
             },
-            child: const Text(
+            child: isLoading ? const Center(child:  CircularProgressIndicator()) : const Text(
               'Login',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
