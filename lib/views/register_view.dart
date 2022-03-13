@@ -33,7 +33,8 @@ class _RegisterViewState extends State<RegisterView> {
   };
   var jsonData = null;
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  final response = await http.post(
+  try {
+    final response = await http.post(
     Uri.parse('http://brnt-bac.herokuapp.com/api/users/tenant/sign-up'),
     // headers: <String, String>{
     //   'Content-Type': 'application/json; charset=UTF-8',
@@ -57,10 +58,48 @@ class _RegisterViewState extends State<RegisterView> {
     
    
   } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create album.');
+    setState((){
+      isLoading =false;
+      var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
   }
+
+  }catch(e){
+
+    if(e.toString() == "Expected a value of type 'String', but got one of type 'Null'"){
+
+      setState((){
+      isLoading =false;
+      var snackBar = const SnackBar(content: Text('fields can not be empty!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    });
+      
+
+    }else if(e.toString() == "XMLHttpRequest error."){
+
+      setState((){
+      isLoading =false;
+      var snackBar = const SnackBar(content: Text('internet connection problem. Please check your internet and try again.'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    });
+    }else{
+
+       setState((){
+      isLoading =false;
+
+       });
+      var snackBar = SnackBar(content: Text(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    }
+
+
+  }
+
+  
 }
 
   @override

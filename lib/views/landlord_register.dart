@@ -4,8 +4,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class LandlordRegisterView extends StatelessWidget {
-  LandlordRegisterView({ Key? key }) : super(key: key);
+
+class LandlordRegister extends StatefulWidget {
+  @override
+  _LandlordRegisterState createState() => _LandlordRegisterState();
+}
+
+
+class _LandlordRegisterState extends State<LandlordRegister> {
+  
   bool isLoading =false;
 
   final TextEditingController _firstName = TextEditingController();
@@ -15,7 +22,7 @@ class LandlordRegisterView extends StatelessWidget {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
-  registerLandlord(String firstName, String lastName, String otherNames, String phone, String email, String password) async {
+  Future<void> registerLandlord(String firstName, String lastName, String otherNames, String phone, String email, String password) async {
   Map data = {
     'first_name': firstName,
     'last_name': lastName,
@@ -26,7 +33,10 @@ class LandlordRegisterView extends StatelessWidget {
   };
   var jsonData = null;
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  final response = await http.post(
+
+  try{
+
+    final response = await http.post(
     Uri.parse('http://brnt-bac.herokuapp.com/api/users/landlord/sign-up'),
     // headers: <String, String>{
     //   'Content-Type': 'application/json; charset=UTF-8',
@@ -50,10 +60,51 @@ class LandlordRegisterView extends StatelessWidget {
     
    
   } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create album.');
+    setState((){
+      isLoading =false;
+      var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
   }
+
+  }catch (e){
+    
+    if(e.toString() == "Expected a value of type 'String', but got one of type 'Null'"){
+
+      setState((){
+      isLoading =false;
+      var snackBar = const SnackBar(content: Text('fields can not be empty!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    });
+      
+
+    }else if(e.toString() == "XMLHttpRequest error."){
+
+      setState((){
+      isLoading =false;
+      var snackBar = const SnackBar(content: Text('internet connection problem. Please check your internet and try again.'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    });
+    }else{
+
+       setState((){
+      isLoading =false;
+
+       });
+      var snackBar = SnackBar(content: Text(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    }
+
+
+
+
+  }
+
+
+  
 }
 
   @override

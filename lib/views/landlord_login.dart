@@ -41,9 +41,16 @@ class _LandlordLoginState extends State<LandlordLogin> {
   if (response.statusCode == 200) {
    
     var jsonData = json.decode(response.body);
+  
     setState((){
       isLoading =false;
       sharedPreferences.setString("token", jsonData['token']);
+      sharedPreferences.setString("user_type", jsonData['individual']['user_type']);
+      sharedPreferences.setString("firstName", jsonData['individual']['first_name']);
+      sharedPreferences.setString("lastName", jsonData['individual']['last_name']);
+      sharedPreferences.setString("otherNames", jsonData['individual']['other_names']);
+      sharedPreferences.setString("phone", jsonData['individual']['phone']);
+      sharedPreferences.setString("email", jsonData['individual']['email']);
       
       Navigator.push(context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
 
@@ -205,7 +212,7 @@ class _LandlordLoginState extends State<LandlordLogin> {
           child: FlatButton(
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                  context, MaterialPageRoute(builder: (_) => LandlordRegister()));
             },
             child: const Text(
               'Register',

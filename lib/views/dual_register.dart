@@ -80,7 +80,7 @@ class DualRegisterView extends StatelessWidget {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                      context, MaterialPageRoute(builder: (_) => LandlordRegister()));
                 },
                 child: const Text(
                   'Register As Property Owner',
