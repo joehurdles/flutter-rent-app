@@ -56,9 +56,8 @@ class _LoginState extends State<Login> {
     
    
   } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create album.');
+    var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
   

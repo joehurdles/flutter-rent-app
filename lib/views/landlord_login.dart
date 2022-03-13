@@ -22,51 +22,55 @@ class _LandlordLoginState extends State<LandlordLogin> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _controller1 = TextEditingController();
 
+  get scaffoldMessenger => null;
 
-  createLogin(String email, String password) async {
+
+  Future<void> createLogin(String email, String password) async {
   Map data = {
     'email': email,
     'password': password,
   };
   var jsonData = null;
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  final response = await http.post(
+  try{
+    final response = await http.post(
     Uri.parse('http://brnt-bac.herokuapp.com/api/users/landlord/sign-in'),
-    // headers: <String, String>{
-    //   'Content-Type': 'application/json; charset=UTF-8',
-    //   'Accept': 'application/json',
-    // },
     body: data,
   );
 
   if (response.statusCode == 200) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
+   
     var jsonData = json.decode(response.body);
     setState((){
       isLoading =false;
       sharedPreferences.setString("token", jsonData['token']);
-      // Navigator.of(context).pushNamedAndRemoveUntil(HouseView(), (Route<dynamic> route ) => false);
+      
       Navigator.push(context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
 
     });
     
    
   } else {
-    isLoading =false;
-    (context) {
-      const Text(
-              'Failed',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            );
+      var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
 
-    };
-    
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-
-    throw Exception('Failed to create album.');
   }
+  }catch (e){
+    if(e.toString() == "Expected a value of type 'String', but got one of type 'Null'"){
+      var snackBar = const SnackBar(content: Text('fields can not be empty!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+    }else{
+      var snackBar = SnackBar(content: Text(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    }
+    
+
+  }
+
+  
 }
   
 
@@ -89,7 +93,7 @@ class _LandlordLoginState extends State<LandlordLogin> {
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),
-        child: isLoading ? const Center(child:  CircularProgressIndicator()) : buildColumn(),
+        child: buildColumn(),
         
       ),
     );
@@ -211,4 +215,9 @@ class _LandlordLoginState extends State<LandlordLogin> {
   //     },
   //   );
   // }
+ 
+
+
+
+
 }
