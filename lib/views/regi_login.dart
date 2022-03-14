@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:rent/views/landlord_register.dart';
-import 'package:rent/views/register_view.dart';
+import 'package:rent/views/dual_login.dart';
+import 'package:rent/views/dual_register.dart';
 
-class DualRegisterView extends StatefulWidget {
-  const DualRegisterView({ Key? key }) : super(key: key);
+class RegiLoginView extends StatefulWidget {
+  const RegiLoginView({ Key? key }) : super(key: key);
 
   @override
-  State<DualRegisterView> createState() => _DualRegisterViewState();
+  State<RegiLoginView> createState() => _RegiLoginViewState();
 }
 
-class _DualRegisterViewState extends State<DualRegisterView> {
+class _RegiLoginViewState extends State<RegiLoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _DualRegisterViewState extends State<DualRegisterView> {
       padding: const EdgeInsets.all(10),
       
         children: [
-         Container(
+           Container(
               height: 35,
               width: 100,
               decoration: BoxDecoration(
@@ -41,10 +41,10 @@ class _DualRegisterViewState extends State<DualRegisterView> {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LandlordRegister()));
+                      context, MaterialPageRoute(builder: (_) => DualLoginView()));
                 },
                 child: const Text(
-                  'Register As Property Owner',
+                  'LogIn',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ),
@@ -62,16 +62,16 @@ class _DualRegisterViewState extends State<DualRegisterView> {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => RegisterView()));
+                      context, MaterialPageRoute(builder: (_) => DualRegisterView()));
                 },
                 child: const Text(
-                  'Register As Tenant',
+                  'Register',
                   style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               ),
             ),
-         ]
-          )
+        ]
+        ),
     );
   }
 }

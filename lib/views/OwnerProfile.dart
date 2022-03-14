@@ -4,9 +4,14 @@ import 'package:rent/views/card_view.dart';
 import 'package:rent/views/chat_view.dart';
 import 'package:rent/views/landlord_register.dart';
 
-class OwnerProfileView extends StatelessWidget {
+class OwnerProfileView extends StatefulWidget {
   const OwnerProfileView({ Key? key }) : super(key: key);
 
+  @override
+  State<OwnerProfileView> createState() => _OwnerProfileViewState();
+}
+
+class _OwnerProfileViewState extends State<OwnerProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

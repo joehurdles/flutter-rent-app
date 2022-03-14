@@ -63,9 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 
-class Search extends StatelessWidget {
+class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
 
+  @override
+  State<Search> createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
 @override
 Widget build(BuildContext context) {
 	return Container(
@@ -173,10 +178,10 @@ class ListItemWidget extends State<SwipeList> {
                                           fontSize: 15,
                                           color: Colors.white),
                                       textAlign: TextAlign.center),
-                                       SizedBox(
+                                       const SizedBox(
                                        height: 150,
                                          ),
-                                      ListTile(
+                                      const ListTile(
                                  title: Text('Description:', style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15,

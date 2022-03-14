@@ -4,13 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:rent/services/api_manager.dart';
 import 'package:rent/views/welcome_view.dart';
 
-class HouseView extends StatelessWidget {
-  // const HouseView({ Key? key }) : super(key: key);
-  APIManager apiService = APIManager();
+class HouseView extends StatefulWidget {
   static const routeName = '/house';
 
   HouseView({Key? key}) : super(key: key);
-  
+
+  @override
+  State<HouseView> createState() => _HouseViewState();
+}
+
+class _HouseViewState extends State<HouseView> {
+  // const HouseView({ Key? key }) : super(key: key);
+  APIManager apiService = APIManager();
+
   @override
  Widget build(BuildContext context) {
     return Scaffold(

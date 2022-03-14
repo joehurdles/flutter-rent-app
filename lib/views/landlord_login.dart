@@ -208,7 +208,7 @@ class _LandlordLoginState extends State<LandlordLogin> {
           height: 30,
           width: 100,
           decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
           child: FlatButton(
             onPressed: () {
               Navigator.push(

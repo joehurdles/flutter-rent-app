@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 
-class GridView1 extends StatelessWidget {
+class GridView1 extends StatefulWidget {
   const GridView1({ Key? key }) : super(key: key);
 
+  @override
+  State<GridView1> createState() => _GridView1State();
+
+  static count({required bool primary, required EdgeInsets padding, required int crossAxisSpacing, required int mainAxisSpacing, required int crossAxisCount, List<Widget>? children}) {}
+}
+
+class _GridView1State extends State<GridView1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +59,4 @@ GridView.count(
 )
     );
   }
-
-  static count({required bool primary, required EdgeInsets padding, required int crossAxisSpacing, required int mainAxisSpacing, required int crossAxisCount, List<Widget>? children}) {}
 }
