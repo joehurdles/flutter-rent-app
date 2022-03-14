@@ -20,9 +20,9 @@ class WelcomeView extends StatelessWidget {
       //   title: Text("brent"),
       // ),
       body:  ListView(
-      padding: EdgeInsets.all(30),
+      padding: const EdgeInsets.all(30),
           children: <Widget>[ 
-            SizedBox(
+            const SizedBox(
               height: 150,
            ),
             Padding(
@@ -41,7 +41,7 @@ class WelcomeView extends StatelessWidget {
               ),
             ),
            
-              SizedBox(
+              const SizedBox(
               height: 130,
            ),
            Container(

@@ -8,7 +8,7 @@ class Notifications extends StatelessWidget {
 Widget build(BuildContext context) {
 	return Scaffold(
 	appBar: AppBar(leading: IconButton(onPressed: (){Navigator.push(
-                      context, MaterialPageRoute(builder: (_) =>  MyHomePage()));}, icon: Icon(Icons.arrow_back) ),
+                      context, MaterialPageRoute(builder: (_) =>  MyHomePage()));}, icon: const Icon(Icons.arrow_back) ),
 
       //    leadingWidth: 60,
       // leading:  Padding(
@@ -26,8 +26,8 @@ Widget build(BuildContext context) {
 		itemCount: 5,
 		itemBuilder: (BuildContext context,int index){
 		return ListTile(
-			leading: Icon(Icons.list),
-			trailing: Text("GFG",
+			leading: const Icon(Icons.list),
+			trailing: const Text("GFG",
 						style: TextStyle(
 							color: Colors.green,fontSize: 15),),
 			title:Text("List item $index")

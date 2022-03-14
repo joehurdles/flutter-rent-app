@@ -22,12 +22,12 @@ class DualRegisterView extends StatelessWidget {
           
             ),
       ),
-        title: Text("brent"),
+        title: const Text("brent"),
       ),
        body:
         ListView(
 
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       
         children: [
            Container(
@@ -40,14 +40,14 @@ class DualRegisterView extends StatelessWidget {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => LandlordLogin()));
                 },
-                child: Text(
+                child: const Text(
                   'LogIn As Property Owner',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ),
             ),
             
-             SizedBox(
+             const SizedBox(
               height: 40,
            ),
 
@@ -61,14 +61,14 @@ class DualRegisterView extends StatelessWidget {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => Login()));
                 },
-                child: Text(
+                child: const Text(
                   'LogIn As Tenant',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ),
             ),
 
-          SizedBox(
+          const SizedBox(
               height: 100,
            ),
 
@@ -80,16 +80,16 @@ class DualRegisterView extends StatelessWidget {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                      context, MaterialPageRoute(builder: (_) => LandlordRegister()));
                 },
-                child: Text(
+                child: const Text(
                   'Register As Property Owner',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ),
             ),
             
-             SizedBox(
+             const SizedBox(
               height: 40,
            ),
 
@@ -103,7 +103,7 @@ class DualRegisterView extends StatelessWidget {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => RegisterView()));
                 },
-                child: Text(
+                child: const Text(
                   'Register As Tenant',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),

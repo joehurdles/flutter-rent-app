@@ -90,7 +90,7 @@ List<T> map<T>(List list, Function handler) {
                     );
                   }).toList(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                ),
                Container(
@@ -103,14 +103,14 @@ List<T> map<T>(List list, Function handler) {
                       Navigator.push(
                           context, MaterialPageRoute(builder: (_) => OwnerProfileView()));
                     },
-                    child: Text(
+                    child: const Text(
                       'Contact Owner',
                       style: TextStyle(color: Colors.white, fontSize: 10),
                     ),
                   ),
                 ),
             
-            SizedBox(
+            const SizedBox(
                   height: 40,
                ),
             
@@ -122,9 +122,9 @@ List<T> map<T>(List list, Function handler) {
                   child: FlatButton(
                     onPressed: () {
                       Navigator.push(
-                          context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                          context, MaterialPageRoute(builder: (_) => LandlordRegister()));
                     },
-                    child: Text(
+                    child: const Text(
                       'Register As Property Owner',
                       style: TextStyle(color: Colors.white, fontSize: 10),
                     ),
