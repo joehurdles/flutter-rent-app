@@ -101,16 +101,16 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leadingWidth: 60,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 28.0),
-          child: CircleAvatar(
-              radius: 30, child: Image.asset('assets/images/loyalKenss.png')
-              // backgroundImage: NetworkImage('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')
+        // leadingWidth: 60,
+        // leading: Padding(
+        //   padding: const EdgeInsets.only(left: 28.0),
+        //   child: CircleAvatar(
+        //       radius: 30, child: Image.asset('assets/images/loyalKenss.png')
+        //       // backgroundImage: NetworkImage('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')
 
-              ),
-        ),
-        title: const Text("brent"),
+        //       ),
+        // ),
+        title: const Text("LogIn"),
       ),
       body: Container(
         alignment: Alignment.center,
@@ -124,8 +124,8 @@ class _LoginState extends State<Login> {
   Column buildColumn() {
     return Column(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(10.0),
+        const Padding(
+          padding: EdgeInsets.all(10.0),
           child: Center(
             child: SizedBox(
                 width: 100,
@@ -133,7 +133,8 @@ class _LoginState extends State<Login> {
                 /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
-                child: Image.asset('assets/images/loyalKenss.png')),
+                // child: Image.asset('assets/images/loyalKenss.png')
+                ),
           ),
         ),
         Padding(
@@ -164,10 +165,10 @@ class _LoginState extends State<Login> {
           height: 30,
         ),
         Container(
-          height: 50,
-          width: 250,
+          height: 40,
+          width: 200,
           decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
           child: FlatButton(
             onPressed: () {
               setState(() {
@@ -204,7 +205,7 @@ class _LoginState extends State<Login> {
           height: 30,
           width: 100,
           decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              color: Colors.grey, borderRadius: BorderRadius.circular(20)),
           child: FlatButton(
             onPressed: () {
               Navigator.push(

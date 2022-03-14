@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:rent/views/login_view.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -107,17 +108,17 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
        backgroundColor: Colors.white,
       appBar: AppBar(
-         leadingWidth: 60,
-      leading:  Padding(
-        padding: const EdgeInsets.only(left: 28.0),
-        child: CircleAvatar(
-              radius: 30,
-              child: Image.asset('assets/images/loyalKenss.png')
-             // backgroundImage: NetworkImage('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')
+      //    leadingWidth: 60,
+      // leading:  Padding(
+      //   padding: const EdgeInsets.only(left: 28.0),
+      //   child: CircleAvatar(
+      //         radius: 30,
+      //         child: Image.asset('assets/images/loyalKenss.png')
+      //        // backgroundImage: NetworkImage('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')
           
-            ),
-      ),
-        title: const Text("brent"),
+      //       ),
+      // ),
+        title: const Text("Register"),
       ),
        body:
         ListView(
@@ -224,7 +225,7 @@ class _RegisterViewState extends State<RegisterView> {
               const SizedBox(
               height: 20,
            ),
-            const Text("AGREE TO TERMS AND CONDITIONS"),
+            const Text("AGREE TO TERMS AND CONDITIONS",textAlign: TextAlign.center,),
              const SizedBox(
               height: 20,
            ),
@@ -232,7 +233,7 @@ class _RegisterViewState extends State<RegisterView> {
               height: 35,
               width: 100,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
               
@@ -248,7 +249,7 @@ class _RegisterViewState extends State<RegisterView> {
                 //       context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
                 // },
                 child: const Text(
-                  'Register As Tenant',
+                  'Register',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ),
@@ -256,8 +257,24 @@ class _RegisterViewState extends State<RegisterView> {
              const SizedBox(
               height: 30,
            ),
-            const Text("Already have an account?Login"),
-
+            const Text("Already have an account?",textAlign: TextAlign.center,
+),
+ Container(
+              height: 35,
+              width: 100,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              child: FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => Login()));
+                },
+                child: const Text(
+                  'LogIn',
+                  style: TextStyle(color: Colors.black, fontSize: 15),
+                ),
+              ),
+            ),
          ]
           )
     );
