@@ -1,8 +1,111 @@
 import 'package:flutter/material.dart';
 import 'package:rent/views/ownerViewProfile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class LandlordRegisterView extends StatelessWidget {
-  const LandlordRegisterView({ Key? key }) : super(key: key);
+
+class LandlordRegister extends StatefulWidget {
+  @override
+  _LandlordRegisterState createState() => _LandlordRegisterState();
+}
+
+
+class _LandlordRegisterState extends State<LandlordRegister> {
+  
+  bool isLoading =false;
+
+  final TextEditingController _firstName = TextEditingController();
+  final TextEditingController _lastName = TextEditingController();
+  final TextEditingController _otherNames = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
+  Future<void> registerLandlord(String firstName, String lastName, String otherNames, String phone, String email, String password) async {
+  Map data = {
+    'first_name': firstName,
+    'last_name': lastName,
+    'other_names': otherNames,
+    'phone': phone,
+    'email': email,
+    'password': password,
+  };
+  var jsonData = null;
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+  try{
+
+    final response = await http.post(
+    Uri.parse('http://brnt-bac.herokuapp.com/api/users/landlord/sign-up'),
+    // headers: <String, String>{
+    //   'Content-Type': 'application/json; charset=UTF-8',
+    //   'Accept': 'application/json',
+    // },
+    body: data,
+  );
+
+  if (response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    var jsonData = json.decode(response.body);
+  
+      isLoading =false;
+      sharedPreferences.setString("token", jsonData['token']);
+      // Navigator.of(context).pushNamedAndRemoveUntil(HouseView(), (Route<dynamic> route ) => false);
+      print(jsonData['token']);
+      
+
+    
+    
+   
+  } else {
+    setState((){
+      isLoading =false;
+      var snackBar = SnackBar(content: Text(json.decode(response.body)['message']));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
+  }
+
+  }catch (e){
+    
+    if(e.toString() == "Expected a value of type 'String', but got one of type 'Null'"){
+
+      setState((){
+      isLoading =false;
+      var snackBar = const SnackBar(content: Text('fields can not be empty!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    });
+      
+
+    }else if(e.toString() == "XMLHttpRequest error."){
+
+      setState((){
+      isLoading =false;
+      var snackBar = const SnackBar(content: Text('internet connection problem. Please check your internet and try again.'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    });
+    }else{
+
+       setState((){
+      isLoading =false;
+
+       });
+      var snackBar = SnackBar(content: Text(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      
+    }
+
+
+
+
+  }
+
+
+  
+}
 
   @override
   Widget build(BuildContext context) {
@@ -19,93 +122,115 @@ class LandlordRegisterView extends StatelessWidget {
           
             ),
       ),
-        title: Text("brent"),
+        title: const Text("brent"),
       ),
        body:
         ListView(
 
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
         children: [
         Padding( 
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _firstName,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'FirstName',
                     hintText: 'Enter your first name'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
            ),
              Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _lastName,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'LastName',
                     hintText: 'Enter your Surname'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
            ),
-             Padding(
+           Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _otherNames,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Location',
-                    hintText: 'Enter place name.'),
+                    labelText: 'otherNames',
+                    hintText: 'Enter your Other Name'),
               ),
             ),
-             SizedBox(
+            const SizedBox(
               height: 20,
            ),
              Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _phone,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Phone',
+                    hintText: '024444444'
+                    ),
+              ),
+            ),
+             const SizedBox(
+              height: 20,
+           ),
+             Padding(
+              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: TextField(
+                controller: _email,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'E-mail',
                     hintText: 'name@example.com'),
               ),
             ),
-             SizedBox(
+             const SizedBox(
               height: 20,
            ),
              Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _password,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'New Password',
                     hintText: 'Enter your password.'),
               ),
             ),
-             SizedBox(
+             const SizedBox(
               height: 20,
            ),
              Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _password,
+                decoration: const InputDecoration(
+
                     border: OutlineInputBorder(),
                     labelText: 'Re-Enter Password',
                     hintText: 'Confirm your password.'),
               ),
             ),
-              SizedBox(
+              const SizedBox(
               height: 20,
            ),
-            Text("AGREE TO TERMS AND CONDITIONS"),
-             SizedBox(
+            const Text("AGREE TO TERMS AND CONDITIONS"),
+             const SizedBox(
               height: 20,
            ),
              Container(
@@ -115,19 +240,28 @@ class LandlordRegisterView extends StatelessWidget {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => OwnerProfile()));
-                },
-                child: Text(
+              
+                isLoading = true;
+             
+              registerLandlord(_firstName.text, _lastName.text, _otherNames.text, _phone.text, _email.text, _password.text);
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (_) => MyHomePage()));
+            },
+
+                // onPressed: () {
+                //   Navigator.push(
+                //       context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
+                // },
+                child: const Text(
                   'Register As Landlord',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ),
             ),
-             SizedBox(
+             const SizedBox(
               height: 30,
            ),
-            Text("Already have an account?Login"),
+            const Text("Already have an account?Login"),
 
          ]
           )

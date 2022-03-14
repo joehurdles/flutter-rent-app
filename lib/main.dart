@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rent/views/houseGrid_view.dart';
 import 'package:rent/views/noti_view.dart';
 import 'package:rent/views/chat_view.dart';
 import 'package:rent/views/dual_register.dart';
@@ -30,7 +31,7 @@ class Brent extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: OwnerProfile(),
+      home: GridView1(),
     );
   }
 }

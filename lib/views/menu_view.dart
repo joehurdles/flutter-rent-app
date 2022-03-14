@@ -19,7 +19,7 @@ class MenuView extends StatelessWidget {
           
       //       ),
       // ),
-        title: Text("brent"),
+        title: const Text("brent"),
       ),
       body: const Center(
         child: Text('My Page!'),
