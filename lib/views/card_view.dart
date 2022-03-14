@@ -3,11 +3,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rent/views/landlord_register.dart';
 import 'package:rent/views/swipe_card.dart';
 import 'package:rent/views/OwnerProfile.dart';
-import 'package:rent/views/item1.dart';
-import 'package:rent/views/item2.dart';
-import 'package:rent/views/item3.dart';
-import 'package:rent/views/item4.dart';
-import 'package:rent/views/item5.dart';
 //import 'package:rent/views/welcome_view.dart';
 //import 'package:rent/services/api_manager.dart';
 class CardView extends StatefulWidget {
