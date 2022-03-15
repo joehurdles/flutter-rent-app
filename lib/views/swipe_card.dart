@@ -181,7 +181,7 @@ class ListItemWidget extends State<SwipeList> {
                                        const SizedBox(
                                        height: 150,
                                          ),
-                                      const ListTile(
+                                    const ListTile(
                                  title: Text('Description:', style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15,

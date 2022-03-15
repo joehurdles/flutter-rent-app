@@ -1,3 +1,4 @@
+import 'package:rent/views/regi_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
@@ -8,7 +9,7 @@ import 'package:rent/views/chat_view.dart';
 >>>>>>> e71ca6ed3ad7c8f27a1b4aa935aab028231268b3
 import 'package:rent/views/dual_register.dart';
 
-//import 'package:rent/views/page_view.dart';
+import 'package:rent/views/page_view.dart';
 void main() {
   runApp(const Brent());
 }
@@ -25,7 +26,7 @@ class Brent extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
 <<<<<<< HEAD
-      home: GridView1(),
+      home: RegiLoginView(),
 =======
 
       

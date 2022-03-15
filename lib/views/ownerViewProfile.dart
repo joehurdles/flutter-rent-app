@@ -3,6 +3,7 @@ import 'package:rent/services/api_manager.dart';
 import 'package:rent/views/card_view.dart';
 import 'package:rent/views/chat_view.dart';
 import 'package:rent/views/landlord_register.dart';
+import 'package:rent/views/houseGrid_view.dart';
 
 class OwnerProfile extends StatefulWidget {
   const OwnerProfile({ Key? key }) : super(key: key);
@@ -72,10 +73,22 @@ class _OwnerProfileState extends State<OwnerProfile> {
  SizedBox(
               height: 40,
            ),
-           Center(
-            child: Text('My Properties', style:TextStyle(fontSize:19,fontWeight: FontWeight.w800, color: Colors.black),
-        ),
-          ),
+           Container(
+              height: 35,
+              width: 80,
+              decoration: BoxDecoration(
+                  color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
+              child: FlatButton(
+                onPressed: () {
+                   Navigator.push(
+                       context, MaterialPageRoute(builder: (_) => GridView1()));
+                },
+                child: Text(
+                  'My Property',
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ),
+            ),
      SizedBox(
               height: 40,
            ),
@@ -87,8 +100,8 @@ class _OwnerProfileState extends State<OwnerProfile> {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //     context, MaterialPageRoute(builder: (_) => LandlordRegisterView()));
+                  //  Navigator.push(
+                      //  context, MaterialPageRoute(builder: (_) => GridView1()));
                 },
                 child: Text(
                   'Upload Property',
