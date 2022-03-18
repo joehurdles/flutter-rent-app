@@ -1,4 +1,5 @@
 import 'package:rent/views/regi_login.dart';
+import 'package:rent/views/register_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
@@ -26,7 +27,7 @@ class Brent extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
 <<<<<<< HEAD
-      home: RegiLoginView(),
+       home: RegiLoginView(),
 =======
 
       
@@ -81,11 +82,9 @@ class _MainPageState extends State<MainPage>{
         ),
         ),
       ],
-      // body: const Center(child: Text("Main Page")),
-      // drawer: Drawer(),
-
-      ),
-
+      body: const Center(child: Text("Main Page")),
+      drawer: Drawer(),
+),
     );
 
   }

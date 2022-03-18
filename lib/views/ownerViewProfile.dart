@@ -98,7 +98,7 @@ class _OwnerProfileState extends State<OwnerProfile> {
                    Navigator.push(
                        context, MaterialPageRoute(builder: (_) => GridView1()));
                 },
-                child: Text(
+                child: const Text(
                   'My Property',
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:rent/views/landlord_register.dart';
 import 'package:rent/views/ownerViewProfile.dart';
@@ -128,8 +130,8 @@ class _LandlordLoginState extends State<LandlordLogin> {
   Column buildColumn() {
     return Column(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(10.0),
+        const Padding(
+          padding: EdgeInsets.all(10.0),
           child: Center(
             child: SizedBox(
                 width: 100,
@@ -137,7 +139,8 @@ class _LandlordLoginState extends State<LandlordLogin> {
                 /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
-                child: Image.asset('assets/images/loyalKenss.png')),
+                // child: Image.asset('assets/images/loyalKenss.png')
+                ),
           ),
         ),
         Padding(
@@ -168,11 +171,11 @@ class _LandlordLoginState extends State<LandlordLogin> {
           height: 30,
         ),
         Container(
-          height: 50,
-          width: 250,
+          height: 30,
+          width: 70,
           decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-          child: FlatButton(
+              color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
+          child: TextButton(
             onPressed: () {
               setState(() {
                 isLoading = true;
@@ -184,14 +187,14 @@ class _LandlordLoginState extends State<LandlordLogin> {
             },
             child: isLoading ? const Center(child:  CircularProgressIndicator()) : const Text(
               'Login',
-              style: TextStyle(color: Colors.white, fontSize: 25),
+              style: TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
         ),
         const SizedBox(
           height: 30,
         ),
-        FlatButton(
+        TextButton(
           onPressed: () {
             //FORGOT PASSWORD SCREEN GOES HERE
           },
@@ -200,25 +203,29 @@ class _LandlordLoginState extends State<LandlordLogin> {
             style: TextStyle(color: Colors.blue, fontSize: 15),
           ),
         ),
-        const Text("Don't have an account?"),
-        const SizedBox(
-          height: 10,
-        ),
-        Container(
-          height: 30,
-          width: 100,
-          decoration: BoxDecoration(
-              color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
-          child: FlatButton(
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => LandlordRegister()));
-            },
-            child: const Text(
-              'Register',
-              style: TextStyle(color: Colors.white, fontSize: 15),
+        Row(
+          children: [
+            const Text("Don't have an account?"),
+            const SizedBox(
+              height: 10,
             ),
-          ),
+            Container(
+              height: 30,
+              width: 100,
+              decoration: const BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.zero),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => LandlordRegister()));
+                },
+                child: const Text(
+                  'Register',
+                  style: TextStyle(color: Colors.black, fontSize: 15),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

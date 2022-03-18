@@ -36,7 +36,7 @@ class _HomeViewState extends State<HomeView> {
           const SizedBox(
             height: 10,
           ),
-          const Expanded(child: SwipeList()),
+           const Expanded(child: SwipeList()),
         ],
       )),
       drawer: Drawer(

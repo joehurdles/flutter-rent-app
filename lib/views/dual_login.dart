@@ -15,17 +15,17 @@ class _DualLoginViewState extends State<DualLoginView> {
     return Scaffold(
        backgroundColor: Colors.white,
       appBar: AppBar(
-         leadingWidth: 60,
-      leading:  Padding(
-        padding: const EdgeInsets.only(left: 28.0),
-        child: CircleAvatar(
-              radius: 30,
-              child: Image.asset('assets/images/loyalKenss.png')
-             // backgroundImage: NetworkImage('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')
+      //    leadingWidth: 60,
+      // leading:  Padding(
+      //   padding: const EdgeInsets.only(left: 28.0),
+      //   child: CircleAvatar(
+      //         radius: 30,
+      //         child: Image.asset('assets/images/loyalKenss.png')
+      //        // backgroundImage: NetworkImage('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')
           
-            ),
-      ),
-        title: const Text("brent"),
+      //       ),
+      // ),
+        title: const Text("Login"),
       ),
        body:
         ListView(
@@ -58,10 +58,10 @@ class _DualLoginViewState extends State<DualLoginView> {
            ),
 
              Container(
-              height: 35,
-              width: 100,
+              // height: 35,
+              // width: 100,
               decoration: BoxDecoration(
-                  color: Colors.grey, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.grey, borderRadius: BorderRadius.zero),
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(

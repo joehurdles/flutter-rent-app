@@ -36,6 +36,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.0.0
   flutter_palette: ^1.1.0+1
+  image_picker: ^0.8.4+11
+  image_cropper: ^1.5.0
+  unicons: ^2.1.0
+  fluttertoast: ^8.0.9
+  auth_buttons: ^2.0.4
+  dropdown_formfield: ^0.1.4
+  equatable: ^2.0.3
+  flutter_uploader: ^1.2.1
+  path: ^1.8.1
+  async: ^2.8.2
+  meta: ^1.7.0
   
 
 dev_dependencies:

@@ -13,6 +13,11 @@ class LandlordRegister extends StatefulWidget {
 
 class _LandlordRegisterState extends State<LandlordRegister> {
   
+ bool agree = false;
+void _doSomething() {
+    // Do something
+  }
+
   bool isLoading =false;
 
   final TextEditingController _firstName = TextEditingController();
@@ -126,8 +131,7 @@ class _LandlordRegisterState extends State<LandlordRegister> {
       ),
        body:
         ListView(
-
-      padding: const EdgeInsets.all(10),
+padding: const EdgeInsets.all(10),
         children: [
         Padding( 
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
@@ -136,7 +140,7 @@ class _LandlordRegisterState extends State<LandlordRegister> {
                 controller: _firstName,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'FirstName',
+                    labelText: 'First name',
                     hintText: 'Enter your first name'),
               ),
             ),
@@ -150,7 +154,7 @@ class _LandlordRegisterState extends State<LandlordRegister> {
                 controller: _lastName,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'LastName',
+                    labelText: 'Last name',
                     hintText: 'Enter your Surname'),
               ),
             ),
@@ -164,7 +168,7 @@ class _LandlordRegisterState extends State<LandlordRegister> {
                 controller: _otherNames,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'otherNames',
+                    labelText: 'Other names',
                     hintText: 'Enter your Other Name'),
               ),
             ),
@@ -179,7 +183,7 @@ class _LandlordRegisterState extends State<LandlordRegister> {
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Phone',
-                    hintText: '024444444'
+                    hintText: '0*********'
                     ),
               ),
             ),
@@ -229,40 +233,83 @@ class _LandlordRegisterState extends State<LandlordRegister> {
               const SizedBox(
               height: 20,
            ),
-            const Text("AGREE TO TERMS AND CONDITIONS"),
+
+           
+            Column(children: [
+        Row(
+          children: [
+            Material(
+              child: Checkbox(
+                value: agree,
+                onChanged: (value) {
+                  setState(() {
+                    agree = value ?? false;
+                  });
+                },
+              ),
+            ),
+            const Text(
+              'I have read and accept terms and conditions',
+              overflow: TextOverflow.ellipsis,
+            )
+          ],
+        ),
+        ElevatedButton(
+             onPressed: agree ? _doSomething : null,
+            child: const Text('Register'))
+      ]),
              const SizedBox(
               height: 20,
            ),
-             Container(
-              height: 35,
-              width: 100,
-              decoration: BoxDecoration(
-                  color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
-              child: FlatButton(
-                onPressed: () {
+            //  Container(
+            //   height: 35,
+            //   width: 100,
+            //   decoration: BoxDecoration(
+            //       color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
+            //   child: FlatButton(
+            //     onPressed: () {
               
-                isLoading = true;
+            //     isLoading = true;
              
-              registerLandlord(_firstName.text, _lastName.text, _otherNames.text, _phone.text, _email.text, _password.text);
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (_) => MyHomePage()));
-            },
+            //   registerTenant(_firstName.text, _lastName.text, _otherNames.text, _phone.text, _email.text, _password.text);
+            //   // Navigator.push(
+            //   //     context, MaterialPageRoute(builder: (_) => MyHomePage()));
+            // },
 
-                // onPressed: () {
-                //   Navigator.push(
-                //       context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
-                // },
-                child: const Text(
-                  'Register',
-                  style: TextStyle(color: Colors.white, fontSize: 15),
-                ),
+            //     // onPressed: () {
+            //     //   Navigator.push(
+            //     //       context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
+            //     // },
+            //     child: const Text(
+            //       'Register',
+            //       style: TextStyle(color: Colors.white, fontSize: 15),
+            //     ),
+            //   ),
+            // ),
+            Expanded(
+              child: Row(
+                children: [
+                  const Text("Already have an account?",textAlign: TextAlign.center,
+            ),
+             Container(
+                    height: 35,
+                    width: 60,
+                    decoration: const BoxDecoration(
+                        color: Colors.white, borderRadius: BorderRadius.zero),
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (_) => const OwnerProfile()));
+                      },
+                      child: const Text(
+                        'LogIn',
+                        style: TextStyle(color: Colors.black, fontSize: 15),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-             const SizedBox(
-              height: 30,
-           ),
-            const Text("Already have an account?Login"),
-
          ]
           )
     );

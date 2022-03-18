@@ -58,6 +58,8 @@ class APIManager{
    
     
   }
+
+  getProfile() {}
 }
 class SignIn {
   final int id;
