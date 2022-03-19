@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rent/views/HomeGrid.dart';
+import 'package:rent/views/houseGrid_view.dart';
 import 'package:rent/views/swipe_card.dart';
 
 class HomeView extends StatefulWidget {
@@ -26,19 +28,23 @@ class _HomeViewState extends State<HomeView> {
         title: Text("brent"),
       ),
 
-      body: Center(
+      body:
+       Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
+           const SizedBox(height: 40,),
+           const Text('TARKWA'), IconButton(onPressed: (){}, icon: const Icon(Icons.favorite,color: Colors.red,)),
+          const SizedBox(height: 30,),
           const Search(),
-          const SizedBox(
-            height: 10,
-          ),
-           const Expanded(child: SwipeList()),
+          const SizedBox(height: 30,),
+          const Expanded(child: Gridding()),
+          //  const Expanded(child: SwipeList()),
         ],
       )),
+      
       drawer: Drawer(
 
         // Add a ListView to the drawer. This ensures the user can scroll

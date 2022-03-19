@@ -36,8 +36,8 @@ List<T> map<T>(List list, Function handler) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(leading: IconButton(onPressed: (){Navigator.push(
-                        context, MaterialPageRoute(builder: (_) =>  MyHomePage()));}, icon: Icon(Icons.arrow_back) ),
+        appBar: AppBar(leading: IconButton(onPressed: (){Navigator.pop(
+                        context, MaterialPageRoute(builder: (_) =>  HomePage()));}, icon: Icon(Icons.arrow_back) ),
     
         //    leadingWidth: 60,
         // leading:  Padding(

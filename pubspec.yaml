@@ -43,10 +43,12 @@ dependencies:
   auth_buttons: ^2.0.4
   dropdown_formfield: ^0.1.4
   equatable: ^2.0.3
-  flutter_uploader: ^1.2.1
-  path: ^1.8.1
+  # flutter_uploader: ^1.2.1
+  # path: ^1.8.1
   async: ^2.8.2
   meta: ^1.7.0
+  camera: ^0.9.4+16
+  dio: ^4.0.4
   
 
 dev_dependencies:

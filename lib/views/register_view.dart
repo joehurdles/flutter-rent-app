@@ -142,8 +142,7 @@ Container(
   }
 
   Column buildColumn() {
-    return Column(
-      children: <Widget>[
+    var children2 = <Widget>[
         const Padding(
           padding: EdgeInsets.all(10.0),
           child: Center(
@@ -235,7 +234,7 @@ height: 30,
               ),
             ),
 
-    //           var _currencies = [
+    //         var _currencies = [
     //               "Property Owner",
     //              "Tenant"
     //               ];
@@ -267,6 +266,8 @@ height: 30,
     //               }).toList(),
     //             ),
     //           ),
+
+              
              const SizedBox(
               height: 20,
            ),
@@ -411,7 +412,9 @@ height: 30,
           
   
   
-     ]
+     ];
+    return Column(
+      children: children2
           );
            }
         }

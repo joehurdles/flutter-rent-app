@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent/services/api_manager.dart';
 import 'package:rent/views/card_view.dart';
-import 'package:rent/views/welcome_view.dart';
 
 class HouseView extends StatefulWidget {
   static const routeName = '/house';
@@ -57,53 +56,64 @@ class _HouseViewState extends State<HouseView> {
             children: [
               Column(
                 children: [
-                  Container( 
-                      height: 100,        
-                    child:
-                   ListTile(
-                  leading: 
-                      Container(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context, MaterialPageRoute(builder: (_) => CardView()));
-                            },
-                            child:  Image.network(
-                                      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                                       fit: BoxFit.fitHeight,
-                                         ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Container( 
+                        height: 100, 
+                        padding: const EdgeInsets.all(0),       
+                      child:
+                     Row(
+                       children: [
+                         Expanded(
+                    flex:6,
+                           child: Container(
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(
+                                        context, MaterialPageRoute(builder: (_) => CardView()));
+                                  },
+                                  child:  Container(
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'),
+                                             fit: BoxFit.fitHeight, )
+                                            )
+
+                                            
+                                               ),
+                                ),
+                            ),
                           ),
+                          const Spacer(
+                            flex:1,
+                          ),
+
+                          Expanded(
+                            flex: 12,
+                            child: Container(
+                               padding: const EdgeInsets.only(top: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+
+                              Text(description,
+                              maxLines: 2,
+                         style:const TextStyle(
+                          // overflow: ,
+                           fontSize:15,
+                           fontWeight: FontWeight.w600, 
+                           color: Colors.black),
+                           ),
+                           const SizedBox(height: 6,),
+                              Text("Location: "+location, style:const TextStyle(fontSize:12,fontWeight: FontWeight.w500, color: Colors.black),),
+                              
+                            ]
+                            ),
+                            ),
+                            ),
+                       ],
+                     )
                       ),
-                      
-                   title: Text(description, 
-                   style:const TextStyle(
-                     fontSize:15,
-                     fontWeight: FontWeight.w800, 
-                     color: Colors.black),
-                     ),
-                     subtitle: Text("Location: "+location, style:const TextStyle(fontSize:12,fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                   trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    
-                   Container(
-                      height: 25,
-                      width: 45,
-                      decoration: BoxDecoration(
-                          color: Colors.white, borderRadius: BorderRadius.zero,),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          '2 YRS ADV',
-                          style: TextStyle(color: Colors.black, fontSize: 10),
-                        ),
-                      ),
-                    ),
-                  ],
-                    ),
-                    )
-                    ),
+                  ),
                 ],
               ),
             ],
@@ -123,7 +133,7 @@ class _HouseViewState extends State<HouseView> {
 
             }else{
               return const Center(
-                child: Text('No data found'),
+                child: Text('Loading...'),
               );
             }
           },

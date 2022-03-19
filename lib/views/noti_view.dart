@@ -13,7 +13,7 @@ class _NotificationsState extends State<Notifications> {
 Widget build(BuildContext context) {
 	return Scaffold(
 	appBar: AppBar(leading: IconButton(onPressed: (){Navigator.push(
-                      context, MaterialPageRoute(builder: (_) =>  MyHomePage()));}, icon: const Icon(Icons.arrow_back) ),
+                      context, MaterialPageRoute(builder: (_) =>  HomePage()));}, icon: const Icon(Icons.arrow_back) ),
 
       //    leadingWidth: 60,
       // leading:  Padding(
